@@ -257,4 +257,22 @@ public class DateUtil {
         long startTimestamp =  currentDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
         return startTimestamp;
     }
+    
+    public static long getTodayEndTimestamp() {
+        //当天零点
+        LocalDateTime todayEnd = LocalDateTime.of(LocalDate.now(), LocalTime.MAX);
+        long startTimestamp =  todayEnd.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+        return startTimestamp;
+    }
+    
+    /**
+     * 
+     * @param localDateTime
+     * @param format
+     * @return
+     */
+    public static String getLocalDateTime2String(LocalDateTime localDateTime, String format) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return localDateTime.format(formatter);
+    }
 }
